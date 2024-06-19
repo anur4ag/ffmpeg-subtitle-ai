@@ -2,7 +2,6 @@
 .vscode/
 .venv*/
 venv*/
-env/*
 __pycache__/
 dist/
 .coverage*
@@ -11,3 +10,5 @@ htmlcov/
 docs/_build/
 uploads/*
 outputs/*
+env*/
+env
