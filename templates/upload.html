@@ -30,7 +30,16 @@
             <label class="custom-file-label" for="videoFile">Choose file</label>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Upload</button>
+        <button type="submit" class="btn btn-primary" id="uploadButton">
+          <span id="buttonText">Upload</span>
+          <span
+            id="spinner"
+            class="spinner-border spinner-border-sm"
+            role="status"
+            aria-hidden="true"
+            style="display: none"
+          ></span>
+        </button>
       </form>
     </div>
     <!-- Add Bootstrap JS and its dependencies -->
@@ -44,6 +53,20 @@
           .siblings(".custom-file-label")
           .addClass("selected")
           .html(fileName);
+      });
+      $("form").on("submit", function (e) {
+        // Check if a file is selected
+        if ($("#videoFile").get(0).files.length === 0) {
+          e.preventDefault();
+          alert("Please select a file.");
+        } else {
+          // Change button text
+          $("#buttonText").text("Adding subtitles...");
+          // Show loading spinner
+          $("#spinner").css("display", "inline-block");
+          // Disable button
+          $("#uploadButton").prop("disabled", true);
+        }
       });
     </script>
   </body>
