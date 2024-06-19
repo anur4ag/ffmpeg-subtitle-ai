@@ -16,22 +16,20 @@
   <body>
     <div class="container">
       <h1 class="my-4">Upload Video</h1>
-      <form method="post" enctype="multipart/form-data" action="/upload">
+      <form method="post" action="/upload">
         <div class="form-group">
-          <div class="custom-file">
-            <input
-              type="file"
-              class="custom-file-input"
-              id="videoFile"
-              name="file"
-              accept="video/*"
-              required
-            />
-            <label class="custom-file-label" for="videoFile">Choose file</label>
-          </div>
+          <label for="videoUrl">Video URL</label>
+          <input
+            type="url"
+            class="form-control"
+            id="videoUrl"
+            name="video_url"
+            placeholder="Enter video URL"
+            required
+          />
         </div>
         <button type="submit" class="btn btn-primary" id="uploadButton">
-          <span id="buttonText">Upload</span>
+          <span id="buttonText">Add Subtitles</span>
           <span
             id="spinner"
             class="spinner-border spinner-border-sm"
@@ -45,20 +43,12 @@
     <!-- Add Bootstrap JS and its dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Script to update the label of the file input when a file is selected -->
     <script>
-      $(".custom-file-input").on("change", function () {
-        var fileName = $(this).val().split("\\").pop();
-        $(this)
-          .siblings(".custom-file-label")
-          .addClass("selected")
-          .html(fileName);
-      });
       $("form").on("submit", function (e) {
-        // Check if a file is selected
-        if ($("#videoFile").get(0).files.length === 0) {
+        // Check if a URL is provided
+        if ($("#videoUrl").val().trim() === "") {
           e.preventDefault();
-          alert("Please select a file.");
+          alert("Please enter a video URL.");
         } else {
           // Change button text
           $("#buttonText").text("Adding subtitles...");
