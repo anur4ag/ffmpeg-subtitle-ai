@@ -12,6 +12,7 @@ Flask==3.0.3
 flatbuffers==24.3.25
 fsspec==2024.6.0
 future==1.0.0
+gunicorn==22.0.0
 huggingface-hub==0.23.4
 humanfriendly==10.0
 idna==3.7
@@ -32,4 +33,3 @@ tqdm==4.66.4
 typing_extensions==4.12.2
 urllib3==2.2.2
 Werkzeug==3.0.3
-gunicorn

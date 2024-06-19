@@ -12,3 +12,4 @@ uploads/*
 outputs/*
 env*/
 env
+.DS_Store
